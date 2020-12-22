@@ -1,3 +1,5 @@
+//Drawing Functionality
+
 const canvas = document.getElementById('canvas');
 const increaseButton = document.getElementById('increase');
 const decreaseButton = document.getElementById('decrease');

@@ -6,6 +6,29 @@ let color = 'black'
 let x
 let y
 
+canvas.addEventListener('mousedown', (e) => {
+  isPressed = true
+
+  x = e.offsetX
+  y = e.offsetY
+})
+
+canvas.addEventListener('mouseup', (e) => {
+  isPressed = false
+
+  x = undefined
+  y = undefined
+})
+
+canvas.addEventListener('mousemove', (e) => {
+  if (isPressed) {
+    const x2 = e.offsetX
+    const y2 = e.offsetY
+
+    drawCircle(x2, y2)
+  }
+})
+
 function drawCircle(x, y) {
   context.beginPath();
   context.arc(x, y, size, 0, Math.PI * 2, true)

@@ -15,6 +15,7 @@ app.use(express.static(__dirname + '/'))
 //User Troubleshooting
 io.on('connection', (socket) => {
   console.log('a user connected');
+  socket.emit('init', { data: 'hello world' });
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });

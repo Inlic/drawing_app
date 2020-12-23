@@ -1,7 +1,5 @@
 //Drawing Functionality
 
-const { Socket } = require("dgram");
-
 const canvas = document.getElementById('canvas');
 const increaseButton = document.getElementById('increase');
 const decreaseButton = document.getElementById('decrease');
@@ -29,6 +27,8 @@ canvas.addEventListener('mouseup', (e) => {
 
   x = undefined
   y = undefined
+
+
 })
 
 canvas.addEventListener('mousemove', (e) => {
@@ -64,7 +64,6 @@ function updateSizeOnScreen() {
   sizeElement.innerText = size
 }
 
-
 increaseButton.addEventListener('click', () => {
   size += 5
   if (size > 30) {
@@ -84,3 +83,7 @@ decreaseButton.addEventListener('click', () => {
 colorElement.addEventListener('change', (e) => color = e.target.value)
 
 clearElement.addEventListener('click', () => context.clearRect(0, 0, canvas.width, canvas.height))
+
+function handleInit(msg) {
+  console.log(msg)
+}

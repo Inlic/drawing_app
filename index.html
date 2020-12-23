@@ -20,9 +20,14 @@
     <input type="color" id="color">
     <button id="clear">X</button>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"
+    integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ=="
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <script>
+    const socket = io('ws://localhost:3000');
+  </script>
 </body>
 
-<script src="/frontend/script.js"></script>
-<script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
 
 </html>

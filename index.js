@@ -21,6 +21,12 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
+  socket.on('draw-circle', function (drawObject) {
+    socket.broadcast.emit('draw-circle', drawObject)
+  })
+  socket.on('draw-line', function (drawObject) {
+    socket.broadcast.emit('draw-line', drawObject)
+  })
 });
 
 http.listen(3000, () => {

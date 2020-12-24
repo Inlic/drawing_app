@@ -22,7 +22,33 @@
   </div>
   <script src="node_modules/socket.io/client-dist/socket.io.js"></script>
   <script src="script.js"></script>
-  <script>const socket = io();</script>
+  <script>
+    const socket = io();
+
+    socket.on('get-canvas', function () {
+      let imgUrl = canvas.toDataURL();
+      socket.emit('send-canvas', imgUrl);
+    });
+    socket.on('receive-canvas', function (imgUrl) {
+      let image = new Image();
+      image.onload = function () {
+        canvas.width = image.width;
+        canvas.height = image.height;
+        canvas.getContext('2d').drawImage(image, 0, 0);
+      };
+      image.src = imgUrl;
+      context.drawImage(image, 500, 500)
+    });
+
+    socket.on('draw-circle', function (drawObject) {
+      let x = drawObject.startX
+      let y = drawObject.startY
+      let color = drawObject.color
+      let
+    })
+    socket.on('draw-line', function (drawObject))
+
+  </script>
 </body>
 
 

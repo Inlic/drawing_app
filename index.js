@@ -9,15 +9,27 @@ app.get('/', (req, res) => {
 
 app.use(express.static(__dirname + '/'))
 
+let userNum = 0;
+let newUsers = [];
+
 io.on('connection', (socket) => {
+  newUsers.push(socket);
   console.log('a user connected');
-  socket.broadcast.emit('get-canvas');
-  socket.on('send-canvas', function (imgUrl) {
-    console.log('emit')
-    socket.emit('receive-canvas', imgUrl)
-  })
+  userNum++
+
+  if (userNum > 1) {
+    socket.broadcast.emit('get-canvas');
+    socket.on('send-canvas', function (imgUrl) {
+      for (let i = 0; i < newUsers.length; i++) {
+        let thisSocket = newUsers[i]
+        thisSocket.emit('receive-canvas', imgUrl)
+      }
+      newUsers = [];
+    });
+  }
   socket.on('disconnect', () => {
     console.log('user disconnected');
+    userNum--
   });
   socket.on('draw-circle', function (drawObject) {
     socket.broadcast.emit('draw-circle', drawObject)

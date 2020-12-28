@@ -9,9 +9,9 @@ const clearElement = document.getElementById('clear')
 
 const context = canvas.getContext('2d');
 
-let size = 10
+let size = +sizeElement.innerText
 let isPressed = false
-let color = 'black'
+let color = colorElement.value
 let x
 let y
 

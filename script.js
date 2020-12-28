@@ -44,33 +44,33 @@ canvas.addEventListener('mousemove', (e) => {
   }
 })
 
-function drawCircle(x, y, c = color, s = size) {
+function drawCircle(x, y) {
   context.beginPath();
-  context.arc(x, y, s, 0, Math.PI * 2)
-  context.fillStyle = c
+  context.arc(x, y, size, 0, Math.PI * 2)
+  context.fillStyle = color
   context.fill()
   socket.emit('draw-circle', {
     startX: x,
     startY: y,
-    circleColor: c,
-    circleSize: s
+    circleColor: color,
+    circleSize: size
   });
 }
 
-function drawLine(x1, y1, x2, y2, c = color, s = size) {
+function drawLine(x1, y1, x2, y2) {
   context.beginPath()
   context.moveTo(x1, y1)
   context.lineTo(x2, y2)
-  context.strokeStyle = c
-  context.lineWidth = s * 2
+  context.strokeStyle = color
+  context.lineWidth = size * 2
   context.stroke()
   socket.emit('draw-line', {
     startX: x1,
     startY: y1,
     endX: x2,
     endY: y2,
-    lineColor: c,
-    lineSize: s
+    lineColor: color,
+    lineSize: size
   })
 }
 

@@ -43,18 +43,14 @@
     socket.on('draw-circle', function (drawObject) {
       let x = drawObject.startX
       let y = drawObject.startY
-      let color = drawObject.c
-      let size = drawObject.s
-      drawCircle(x, y, color, size)
+      drawCircle(x, y)
     })
     socket.on('draw-line', function (drawObject) {
       let x1 = drawObject.startX
       let y1 = drawObject.startY
       let x2 = drawObject.endX
       let y2 = drawObject.endY
-      let color = drawObject.c
-      let size = drawObject.s
-      drawLine(x1, y1, x2, y2, color, size)
+      drawLine(x1, y1, x2, y2)
     })
 
   </script>

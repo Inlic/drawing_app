@@ -69,8 +69,6 @@ function drawLine(x1, y1, x2, y2) {
     startY: y1,
     endX: x2,
     endY: y2,
-    lineColor: color,
-    lineSize: size
   })
 }
 
@@ -96,4 +94,6 @@ decreaseButton.addEventListener('click', () => {
 
 colorElement.addEventListener('change', (e) => color = e.target.value)
 
-clearElement.addEventListener('click', () => context.clearRect(0, 0, canvas.width, canvas.height))
+clearElement.addEventListener('click', () => {
+  context.clearRect(0, 0, canvas.width, canvas.height)
+})

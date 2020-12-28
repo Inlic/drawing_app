@@ -27,7 +27,7 @@
 
     socket.on('get-canvas', function () {
       let imgUrl = canvas.toDataURL();
-      socket.emit('send-canvas', imgUrl);
+      socket.broadcast.emit('send-canvas', imgUrl);
     });
     socket.on('receive-canvas', function (imgUrl) {
       let image = new Image();
